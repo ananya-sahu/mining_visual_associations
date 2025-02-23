@@ -1,5 +1,6 @@
 # mining_visual_associations
 
+To generate the dataset first download all COCO train and val annotations and images for the captioning task here: https://cocodataset.org/#download
 # Data Generation Process: 
 
 Step 1: format file to get associations from gpt4-o-mini and upload generated files to open ai batch api 
