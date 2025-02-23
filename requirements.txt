@@ -1,0 +1,28 @@
+en_core_web_sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl#sha256=1932429db727d4bff3deed6b34cfc05df17794f4a52eeb26cf8928f7c1a0fb85
+ftfy==6.3.1
+huggingface-hub==0.26.2
+kiwisolver==1.4.7
+matplotlib==3.9.2
+matplotlib-inline @ file:///home/conda/feedstock_root/build_artifacts/matplotlib-inline_1713250518406/work
+nltk==3.9.1
+numpy==2.0.2
+open_clip_torch==2.30.0
+openai==1.54.1
+pandas==2.2.3
+pillow==10.4.0
+pydantic==2.9.2
+regex==2024.9.11
+requests==2.32.3
+scikit-learn==1.6.1
+scipy==1.14.1
+seaborn==0.13.2
+sentencepiece==0.2.0
+spacy==3.8.2
+spacy-legacy==3.0.12
+spacy-loggers==1.0.5
+tokenizers==0.20.3
+torch==2.4.0
+torchvision==0.19.0
+tqdm==4.66.6
+transformers==4.46.2
+vllm==0.6.3.post1
