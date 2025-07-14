@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set GPU device (optional)
-# export CUDA_VISIBLE_DEVICES=0
+export CUDA_VISIBLE_DEVICES=0
 
 # Paths and hyperparameters
 TRAIN_JSON="../DATA/train.json"
