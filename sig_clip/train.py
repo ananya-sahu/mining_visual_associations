@@ -255,7 +255,7 @@ def main():
   batch_size = int(sys.argv[8])
   epochs = int(sys.argv[9])
   patience = int(sys.argv[10])
-#   train_with_val(train_file, val_file, train_dir,val_dir,save_path,num_workers,num_tasks, batch_size, epochs, patience)
-  print(train_file, val_file, train_dir, val_dir, save_path, num_workers, num_tasks, batch_size, epochs, patience)
+  train_with_val(train_file, val_file, train_dir,val_dir,save_path,num_workers,num_tasks, batch_size, epochs, patience)
+#   print(train_file, val_file, train_dir, val_dir, save_path, num_workers, num_tasks, batch_size, epochs, patience)
 if __name__ == "__main__":
   main()
