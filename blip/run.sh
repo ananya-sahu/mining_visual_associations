@@ -8,7 +8,7 @@ TRAIN_JSON="../DATA/train.json"
 VAL_JSON="../DATA/val.json"
 TRAIN_DIR="coco_train" #replace with path to coco train directory 
 VAL_DIR="coco_val" #replace with path to coco val directory (the inner most directory that contain all the images)
-SAVE_PATH="siglip_model.pt"
+SAVE_PATH="blip_model.pt"
 NUM_WORKERS=8
 NUM_TASKS=5
 BATCH_SIZE=64
@@ -26,4 +26,4 @@ python train.py \
   $NUM_TASKS \
   $BATCH_SIZE \
   $EPOCHS \
-  $PATIENCE 2>&1 | tee training_log_siglip.txt
+  $PATIENCE 2>&1 | tee training_log_blip.txt

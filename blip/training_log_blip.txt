@@ -1,0 +1,1 @@
+('../DATA/train.json', '../DATA/val.json', 'coco_train', 'coco_val', 'blip_model.pt', 8, 5, 64, 10, 3)
