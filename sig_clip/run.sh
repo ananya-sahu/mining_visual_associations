@@ -27,3 +27,103 @@ python train.py \
   $BATCH_SIZE \
   $EPOCHS \
   $PATIENCE 2>&1 | tee training_log_siglip.txt
+
+# ------------------ Evaluation 1------------------
+
+# Evaluation config (SEPARATE from VAL_JSON/VAL_DIR)
+EVAL_JSON="mm_poem.json"     # path to test/eval JSON
+EVAL_IMG_DIR="Eval1_Imgs"             # path to test images
+EVAL_SCRIPT="evaluate_siglip.py"
+EVAL_LOG="eval_log_siglip.txt"
+
+# Clear eval log before writing
+> $EVAL_LOG
+
+# Baseline evaluation
+echo -e "\n=== Baseline Evaluation ===" | tee -a $EVAL_LOG
+python eval_1.py \
+  true \
+  none \
+  $EVAL_JSON \
+  $EVAL_IMG_DIR \
+  none 2>&1 | tee -a $EVAL_LOG
+
+# Evaluation with task labels 0 through 4
+for TASK in {0..4}; do
+  echo -e "\n=== Evaluation with Task Label $TASK ===" | tee -a $EVAL_LOG
+  python eval_1.py \
+    false \
+    $SAVE_PATH \
+    $EVAL_JSON \
+    $EVAL_IMG_DIR \
+    $TASK 2>&1 | tee -a $EVAL_LOG
+done
+
+# ------------------ Evaluation 2 (SigLIP Metaphor) ------------------
+
+# Eval 2 config
+EVAL_SCRIPT_2="eval_2.py"
+EVAL_LOG_2="eval2_log_siglip.txt"
+
+# Label directories (exactly 6 required)
+LABEL_ROOT_0="dummy_data"
+LABEL_ROOT_1="dummy_data/label_0"
+LABEL_ROOT_2="dummy_data/label_1"
+LABEL_ROOT_3="dummy_data/label_2"
+LABEL_ROOT_4="dummy_data/label_3"
+LABEL_ROOT_5="dummy_data/label_4"
+
+# Clear eval log
+> $EVAL_LOG_2
+
+# Baseline
+echo -e "\n=== [Eval 2] Baseline ===" | tee -a $EVAL_LOG_2
+python eval_2.py \
+  true \
+  none \
+  $LABEL_ROOT_0 \
+  $LABEL_ROOT_1 \
+  $LABEL_ROOT_2 \
+  $LABEL_ROOT_3 \
+  $LABEL_ROOT_4 \
+  $LABEL_ROOT_5 2>&1 | tee -a $EVAL_LOG_2
+
+python eval_2.py \
+  false \
+  $SAVE_PATH \
+  $LABEL_ROOT_0 \
+  $LABEL_ROOT_1 \
+  $LABEL_ROOT_2 \
+  $LABEL_ROOT_3 \
+  $LABEL_ROOT_4 \
+  $LABEL_ROOT_5 2>&1 | tee -a $EVAL_LOG_2
+
+
+# ------------------ Evaluation 3 (SigLIP Contrastive) ------------------
+
+# Eval 2 config
+EVAL_LOG_3="eval3_log_siglip.txt"
+PICKLE_FILE="/content/dummy_contrastive.pkl"  # Update to real contrastive pickle if needed
+
+# Clear eval log
+> $EVAL_LOG_3
+
+# Baseline evaluation
+echo -e "\n=== [Eval 2] Baseline (Contrastive) ===" | tee -a $EVAL_LOG_3
+python eval_3.py \
+  none \
+  true \
+  $PICKLE_FILE 2>&1 | tee -a $EVAL_LOG_3
+
+# Evaluation with task labels 0 through 4
+
+echo -e "\n=== [Eval 3] Task Labels $TASK" | tee -a $EVAL_LOG_3
+python eval_3.py \
+  $SAVE_PATH \
+  false \
+  $PICKLE_FILE \
+  $TASK 2>&1 | tee -a $EVAL_LOG_3
+
+
+
+

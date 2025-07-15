@@ -135,9 +135,10 @@ def recall_at_k(sim_matrix, k):
 def train_with_val(train_json, val_json, train_dir, val_dir, save_path,
                    num_workers=4, num_tasks=5, batch_size=32, epochs=10, patience=3):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
-    processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-base")
-    blip_model = BlipForImageTextRetrieval.from_pretrained("Salesforce/blip-image-captioning-base")
+    # processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-base")
+    # blip_model = BlipForImageTextRetrieval.from_pretrained("Salesforce/blip-image-captioning-base")
+    processor = BlipProcessor.from_pretrained("Salesforce/blip-itm-base-coco")
+    blip_model = BlipForImageTextRetrieval.from_pretrained("Salesforce/blip-itm-base-coco")
 
     wrapper = Blip1Wrapper(
         blip_model=blip_model,
