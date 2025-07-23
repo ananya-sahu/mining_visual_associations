@@ -43,5 +43,5 @@ Task 3:
 python eval_met_task3.py <checkpt path of model or None if baseline> <true or false for baseline clip or our clip model> <path to metaphors file> 
 
 
-Captions Dataset: https://drive.google.com/drive/folders/15aK4YeX8QUUpLoHr8zkCh0ewF6-hrwOf?usp=sharing
+Dataset and Models: https://drive.google.com/drive/folders/15aK4YeX8QUUpLoHr8zkCh0ewF6-hrwOf?usp=sharing
 
